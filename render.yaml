@@ -44,6 +44,8 @@ services:
     envVars:
       - key: BACKEND_URL
         value: https://hirehub-api.onrender.com
+      - key: NGINX_ENVSUBST_FILTER
+        value: "BACKEND_URL"
 
 databases:
   # 3. Managed PostgreSQL Database
