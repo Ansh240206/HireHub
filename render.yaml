@@ -43,7 +43,10 @@ services:
     plan: free
     envVars:
       - key: BACKEND_URL
-        value: http://hirehub-api:8080
+        fromService:
+          type: web
+          name: hirehub-api
+          envVarKey: RENDER_EXTERNAL_URL
       - key: NGINX_ENVSUBST_FILTER
         value: "BACKEND_URL"
 
