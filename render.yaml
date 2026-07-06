@@ -7,26 +7,11 @@ services:
     dockerContext: hirehub-backend
     plan: free
     envVars:
+      # Render will prompt you for these values securely during deployment so they are not committed to git:
       - key: DB_URL
-        value: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_DATABASE}
       - key: DB_USERNAME
-        fromDatabase:
-          name: hirehub-db
-          property: user
+        value: postgres
       - key: DB_PASSWORD
-        fromDatabase:
-          name: hirehub-db
-          property: password
-      - key: DB_HOST
-        fromDatabase:
-          name: hirehub-db
-          property: host
-      - key: DB_PORT
-        value: "5432"
-      - key: DB_DATABASE
-        fromDatabase:
-          name: hirehub-db
-          property: database
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRATION_MS
@@ -49,10 +34,3 @@ services:
           envVarKey: RENDER_EXTERNAL_URL
       - key: NGINX_ENVSUBST_FILTER
         value: "BACKEND_URL"
-
-databases:
-  # 3. Managed PostgreSQL Database
-  - name: hirehub-db
-    databaseName: hirehub
-    user: hirehub
-    plan: free
