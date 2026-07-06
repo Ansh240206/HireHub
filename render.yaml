@@ -7,11 +7,14 @@ services:
     dockerContext: hirehub-backend
     plan: free
     envVars:
-      # Render will prompt you for these values securely during deployment so they are not committed to git:
       - key: DB_URL
+        value: "jdbc:postgresql://db.yfbgidketrdfxobaklsx.supabase.co:5432/postgres"
+        sync: false
       - key: DB_USERNAME
         value: postgres
       - key: DB_PASSWORD
+        value: "Vwewa54ZS5bX7PsO"
+        sync: false
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRATION_MS
