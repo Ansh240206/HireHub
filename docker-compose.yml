@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: hirehub-postgres
+    environment:
+      POSTGRES_DB: hirehub
+      POSTGRES_USER: hirehub
+      POSTGRES_PASSWORD: hirehub
+    ports:
+      - "5433:5432"
+    volumes:
+      - hirehub_postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: ./hirehub-backend
+    container_name: hirehub-api
+    depends_on:
+      - postgres
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/hirehub
+      DB_USERNAME: hirehub
+      DB_PASSWORD: hirehub
+      JWT_SECRET: replace-this-with-a-long-secure-secret-before-production
+      JWT_EXPIRATION_MS: 900000
+      JWT_REFRESH_EXPIRATION_MS: 604800000
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./uploads:/app/uploads
+
+  app:
+    build: ./hirehub-app
+    container_name: hirehub-frontend
+    depends_on:
+      - api
+    ports:
+      - "80:80"
+
+volumes:
+  hirehub_postgres_data:
