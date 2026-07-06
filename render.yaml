@@ -41,6 +41,9 @@ services:
     dockerfilePath: hirehub-app/Dockerfile
     dockerContext: hirehub-app
     plan: free
+    envVars:
+      - key: BACKEND_URL
+        value: https://hirehub-api.onrender.com
 
 databases:
   # 3. Managed PostgreSQL Database

@@ -35,6 +35,8 @@ services:
       - api
     ports:
       - "80:80"
+    environment:
+      - BACKEND_URL=http://hirehub-api:8080
 
 volumes:
   hirehub_postgres_data:
