@@ -8,12 +8,10 @@ services:
     plan: free
     envVars:
       - key: DB_URL
-        value: "jdbc:postgresql://db.yfbgidketrdfxobaklsx.supabase.co:5432/postgres"
         sync: false
       - key: DB_USERNAME
         value: postgres
       - key: DB_PASSWORD
-        value: "Vwewa54ZS5bX7PsO"
         sync: false
       - key: JWT_SECRET
         generateValue: true
@@ -37,3 +35,10 @@ services:
           envVarKey: RENDER_EXTERNAL_URL
       - key: NGINX_ENVSUBST_FILTER
         value: "BACKEND_URL"
+
+databases:
+  # 3. Managed PostgreSQL Database
+  - name: hirehub-db
+    databaseName: hirehub
+    user: hirehub
+    plan: free
