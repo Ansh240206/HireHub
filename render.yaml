@@ -2,8 +2,8 @@ services:
   # 1. Backend Web Service
   - type: web
     name: hirehub-api
-    env: docker
-    dockerFilePath: hirehub-backend/Dockerfile
+    runtime: docker
+    dockerfilePath: hirehub-backend/Dockerfile
     dockerContext: hirehub-backend
     plan: free
     envVars:
@@ -37,10 +37,9 @@ services:
   # 2. Frontend Web Service
   - type: web
     name: hirehub-frontend
-    env: docker
-    dockerFilePath: hirehub-app/Dockerfile
+    runtime: docker
+    dockerfilePath: hirehub-app/Dockerfile
     dockerContext: hirehub-app
-    publishAsPath: /
     plan: free
 
 databases:
