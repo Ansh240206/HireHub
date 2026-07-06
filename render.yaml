@@ -22,7 +22,7 @@ services:
           name: hirehub-db
           property: host
       - key: DB_PORT
-        value: 5432
+        value: "5432"
       - key: DB_DATABASE
         fromDatabase:
           name: hirehub-db
@@ -30,9 +30,9 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRATION_MS
-        value: 900000
+        value: "900000"
       - key: JWT_REFRESH_EXPIRATION_MS
-        value: 604800000
+        value: "604800000"
 
   # 2. Frontend Web Service
   - type: web
